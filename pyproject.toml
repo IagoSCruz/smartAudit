@@ -1,0 +1,16 @@
+[project]
+name = "smartaudit"
+version = "0.1.0"
+description = "SaaS multi-tenant para conciliação e auditoria de fretes"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "django>=6.1.1",
+]
+
+[project.scripts]
+smartaudit = "smartaudit:main"
+
+[build-system]
+requires = ["uv_build>=0.12.9,<0.13.0"]
+build-backend = "uv_build"

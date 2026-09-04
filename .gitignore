@@ -1,0 +1,35 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Django runtime
+db.sqlite3
+*.sqlite3
+media/
+staticfiles/
+
+# Environment and tooling
+.env
+.env.*
+!.env.example
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+
+# Docs
+docs/*
+AGENTS.md

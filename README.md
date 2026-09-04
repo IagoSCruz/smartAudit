@@ -1,0 +1,42 @@
+# SmartAudit
+
+SaaS multi-tenant para conciliação e auditoria de fretes. O sistema compara
+CT-es e NF-es com as tabelas contratadas das transportadoras para identificar
+cobranças divergentes.
+
+## Estado atual
+
+A fundação Django está pronta, com:
+
+- settings separados para base, desenvolvimento local e produção;
+- usuário customizado com login por e-mail;
+- tenants e memberships com papéis `admin`, `operator` e `viewer`;
+- modelos abstratos para auditoria temporal e escopo por tenant;
+- endpoint de saúde em `/health/` e Django Admin em `/admin/`.
+
+As decisões arquiteturais e o roadmap canônico ficam na seção **10. Aplicação
+do Blueprint: SmartAudit** de
+[`docs/blueprint-saas-django.md`](docs/blueprint-saas-django.md).
+
+## Desenvolvimento local
+
+Requisitos: Python 3.13 e [uv](https://docs.astral.sh/uv/).
+
+```bash
+uv sync --locked
+uv run python manage.py migrate
+uv run python manage.py createsuperuser
+uv run python manage.py runserver
+```
+
+Validação rápida:
+
+```bash
+uv run python manage.py check
+uv run python manage.py test
+uv run python manage.py makemigrations --check --dry-run
+```
+
+O ambiente local usa SQLite apenas para reduzir o custo de bootstrap. O
+ambiente de produção está desenhado para PostgreSQL; o Compose e o driver serão
+adicionados na sprint de infraestrutura antes de qualquer dado real.
