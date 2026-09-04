@@ -18,6 +18,7 @@ def required_env(name: str) -> str:
 
 DEBUG = False
 SECRET_KEY = required_env("DJANGO_SECRET_KEY")
+JWT_SIGNING_KEY = os.getenv("JWT_SIGNING_KEY", SECRET_KEY)
 ALLOWED_HOSTS = [
     host.strip()
     for host in required_env("DJANGO_ALLOWED_HOSTS").split(",")
@@ -41,6 +42,9 @@ DATABASES = {
         "CONN_HEALTH_CHECKS": True,
     }
 }
+
+CELERY_BROKER_URL = required_env("CELERY_BROKER_URL")
+CELERY_RESULT_BACKEND = required_env("CELERY_RESULT_BACKEND")
 
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True

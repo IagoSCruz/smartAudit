@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     "smartaudit.core.apps.CoreConfig",
     "smartaudit.accounts.apps.AccountsConfig",
     "smartaudit.tenants.apps.TenantsConfig",
+    "smartaudit.documents.apps.DocumentsConfig",
 ]
 
 MIDDLEWARE = [
@@ -29,6 +30,7 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "smartaudit.tenants.middleware.TenantContextMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
@@ -86,6 +88,30 @@ MEDIA_ROOT = PROJECT_ROOT / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 TEST_RUNNER = "smartaudit.testing.SmartAuditTestRunner"
+
+JWT_ALGORITHM = "HS256"
+JWT_ISSUER = "smartaudit"
+JWT_AUDIENCE = "smartaudit-api"
+JWT_ACCESS_TTL_SECONDS = int(os.getenv("JWT_ACCESS_TTL_SECONDS", "900"))
+JWT_REFRESH_TTL_SECONDS = int(os.getenv("JWT_REFRESH_TTL_SECONDS", "604800"))
+
+CELERY_BROKER_URL = os.getenv(
+    "CELERY_BROKER_URL",
+    "amqp://smartaudit:smartaudit-local@localhost:5672//",
+)
+CELERY_RESULT_BACKEND = os.getenv(
+    "CELERY_RESULT_BACKEND",
+    "redis://localhost:6379/0",
+)
+CELERY_TIMEZONE = TIME_ZONE
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+CELERY_ACCEPT_CONTENT = ["json"]
+
+DOCUMENT_UPLOAD_MAX_BYTES = int(
+    os.getenv("DOCUMENT_UPLOAD_MAX_BYTES", str(5 * 1024 * 1024))
+)
 
 LOGIN_URL = "admin:login"
 LOGIN_REDIRECT_URL = "/"

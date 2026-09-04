@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE foo [
+  <!ENTITY xxe SYSTEM "file:///etc/passwd">
+]>
+<NFe xmlns="http://www.portalfiscal.inf.br/nfe">
+  <infNFe Id="NFe33333333333333333333333333333333333333333333">
+    <ide><serie>1</serie><nNF>999</nNF><dhEmi>2026-09-01T09:00:00-03:00</dhEmi></ide>
+    <emit><CNPJ>11111111000191</CNPJ><xNome>&xxe;</xNome></emit>
+    <total><ICMSTot><vNF>1.00</vNF></ICMSTot></total>
+  </infNFe>
+</NFe>

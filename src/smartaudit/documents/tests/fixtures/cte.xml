@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cteProc xmlns="http://www.portalfiscal.inf.br/cte" versao="4.00">
+  <CTe>
+    <infCte Id="CTe11111111111111111111111111111111111111111111" versao="4.00">
+      <ide>
+        <serie>1</serie>
+        <nCT>123</nCT>
+        <dhEmi>2026-09-01T10:30:00-03:00</dhEmi>
+        <tpCTe>0</tpCTe>
+      </ide>
+      <emit>
+        <CNPJ>12.345.678/0001-99</CNPJ>
+        <xNome>Transportadora Exemplo</xNome>
+      </emit>
+      <rem>
+        <CNPJ>11.111.111/0001-91</CNPJ>
+        <xNome>Loja Remetente</xNome>
+        <enderReme><CEP>01.001-000</CEP><UF>SP</UF></enderReme>
+      </rem>
+      <dest>
+        <CNPJ>22.222.222/0001-91</CNPJ>
+        <xNome>Cliente Destinatário</xNome>
+        <enderDest><CEP>20.040-020</CEP><UF>RJ</UF></enderDest>
+      </dest>
+      <vPrest><vTPrest>125.50</vTPrest></vPrest>
+      <infCTeNorm>
+        <infCarga>
+          <vCarga>2500.00</vCarga>
+          <infQ><tpMed>PESO BRUTO</tpMed><qCarga>18.750</qCarga></infQ>
+        </infCarga>
+        <infDoc>
+          <infNFe><chave>22222222222222222222222222222222222222222222</chave></infNFe>
+        </infDoc>
+      </infCTeNorm>
+    </infCte>
+  </CTe>
+</cteProc>
