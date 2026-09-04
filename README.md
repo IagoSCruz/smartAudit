@@ -20,10 +20,11 @@ do Blueprint: SmartAudit** de
 
 ## Desenvolvimento local
 
-Requisitos: Python 3.13 e [uv](https://docs.astral.sh/uv/).
+Requisitos: Python 3.13, [uv](https://docs.astral.sh/uv/) e Node.js (para hooks de commit).
 
 ```bash
 uv sync --locked
+npm install  # ativa os hooks de commit (Husky + Commitlint)
 uv run python manage.py migrate
 uv run python manage.py createsuperuser
 uv run python manage.py runserver
@@ -35,7 +36,10 @@ Validação rápida:
 uv run python manage.py check
 uv run python manage.py test
 uv run python manage.py makemigrations --check --dry-run
+npx commitlint --from=HEAD~1
 ```
+
+O padrão de mensagens de commit segue o Conventional Commits com escopos mapeados para os bounded contexts do sistema. Consulte os detalhes em [`docs/commitlint.md`](docs/commitlint.md).
 
 O ambiente local usa SQLite apenas para reduzir o custo de bootstrap. O
 ambiente de produção está desenhado para PostgreSQL; o Compose e o driver serão
